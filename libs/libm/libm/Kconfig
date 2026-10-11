@@ -12,8 +12,8 @@
 
 config LIBM_ARCH_FMAF
 	bool
-	default y
-	depends on LIBM && ARCH_RISCV && ARCH_FPU
+	default n
+	depends on LIBM
 
 config LIBM_ARCH_CEIL
 	bool
