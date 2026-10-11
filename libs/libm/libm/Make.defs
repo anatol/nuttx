@@ -34,8 +34,6 @@ ifeq ($(CONFIG_LIBM_ARCH_FMAF),y)
 CSRCS += lib_fmaf_riscv.c
 DEPPATH += --dep-path libm/risc-v
 VPATH += :libm/risc-v
-else
-CSRCS += lib_fmaf.c
 endif
 
 CSRCS += lib_acos.c lib_asin.c lib_atan.c lib_atan2.c lib_cos.c
@@ -115,6 +113,10 @@ endif
 
 ifneq ($(CONFIG_LIBM_ARCH_SQRTF),y)
 CSRCS += lib_sqrtf.c
+endif
+
+ifneq ($(CONFIG_LIBM_ARCH_FMAF),y)
+CSRCS += lib_fmaf.c
 endif
 
 ifeq ($(CONFIG_ARCH_ARM),y)
