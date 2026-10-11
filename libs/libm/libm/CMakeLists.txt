@@ -25,6 +25,10 @@ if(CONFIG_LIBM)
     nuttx_add_subdirectory(arm)
   endif()
 
+  if(CONFIG_ARCH_RISCV)
+    nuttx_add_subdirectory(risc-v)
+  endif()
+
   # Add the floating point math C files to the build
   set(SRCS
       lib_acosf.c
@@ -151,9 +155,7 @@ if(CONFIG_LIBM)
   # Use the C versions of some functions only if architecture specific optimized
   # versions are not provided.
 
-  if(CONFIG_LIBM_ARCH_FMAF)
-    list(APPEND SRCS risc-v/lib_fmaf_riscv.c)
-  else()
+  if(NOT CONFIG_LIBM_ARCH_FMAF)
     list(APPEND SRCS lib_fmaf.c)
   endif()
 
